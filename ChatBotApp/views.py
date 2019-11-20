@@ -2,7 +2,7 @@ from django.shortcuts import render
 #from .models import Odpowiedz
 import random
 def odpowiedz_bota(request):
-    return render (request, 'C:/Users/student/Desktop/repozytorium/ChatBot/ChatBotApp/baza_danych1.csv', {})
+    return render (request, '/baza_danych1.csv', {})
 
 
 chosen=0
@@ -33,10 +33,10 @@ def test (request, chosen):
     button3=dictionary[pytanie3][0]
     button4=dictionary[pytanie4][0]
     #testowa=pytanie1
-        #zmienna chosen jest wysyłana do nas za drugim załadowaniem
-    #if chosen==1:
-    odpowiedz=random.randint(1,dictionary[chosen])
-    odpowiedz_bota_z_listy=dictionary[chosen][odpowiedz]
-    return render (request, 'C:/Users/student/Desktop/repozytorium/ChatBot/ChatBotApp/templates/odpowiedz.html', {"testowa":testowa, "button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":odpowiedz_bota_z_listy} )
-#    else:
-        #return render (request, 'C:/Users/student/Desktop/repozytorium/ChatBot/ChatBotApp/templates/odpowiedz.html', #{"button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":"ddddddddddkdkdkdkdkd"} )
+        #zmienna chosen jest wysyłana do nas za drugim załadowaniem, więc zmienia wartość z 99 na 1-4
+    if chosen!==99:
+        odpowiedz=random.randint(1,dictionary[chosen])
+        odpowiedz_bota_z_listy=dictionary[chosen][odpowiedz]
+        return render (request, 'templates/odpowiedz.html', {"testowa":testowa, "button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":odpowiedz_bota_z_listy} )
+    else:
+        return render (request, 'templates/odpowiedz.html', #{"button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":"ddddddddddkdkdkdkdkd"} )
