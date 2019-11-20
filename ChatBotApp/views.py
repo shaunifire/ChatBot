@@ -9,7 +9,9 @@ chosen=0
 
     #chosen == 99 to zmienna kontrolna, która zmieni się gdy zostanie wysłana informacja z templatki z kliknięciem na button. Ponieważ będzie ona miała wartość zgodną z randomową liczbą wybraną prze kompa, muszę jej nadać kontrolną liczbę która NA PEWNO nie wystąpi podczaslosowania.
 def funkcja_buttona(request):
-    chosen=
+    chosen=99
+    if request.method=='POST':
+        chosen=request.POST.get("wybor")
     return test(request,chosen)
     #ładujemy bazę danych
 
