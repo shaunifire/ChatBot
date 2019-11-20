@@ -9,21 +9,21 @@ chosen=0
 
     #chosen == 99 to zmienna kontrolna, która zmieni się gdy zostanie wysłana informacja z templatki z kliknięciem na button. Ponieważ będzie ona miała wartość zgodną z randomową liczbą wybraną prze kompa, muszę jej nadać kontrolną liczbę która NA PEWNO nie wystąpi podczaslosowania.
 def funkcja_buttona(request):
-    chosen=1
+    chosen=
     return test(request,chosen)
     #ładujemy bazę danych
 
-def test (request, chosen):
+def test (request, chosen=99):
     import os
     import pandas
     import csv
     lista=[]
-    with open('C:/Users/student/Desktop/repozytorium/ChatBot/ChatBotApp/baza_danych1.csv', 'r', newline='\n') as csvfile:
+    with open('/baza_danych1.csv', 'r', newline='\n') as csvfile:
         data=csv.reader(csvfile)
         dictionary=[]
         for row in data:
             dictionary.append(row[0].split(";"))
-    #Ładujemy pytania do bota które wrzucimy pod buttony. Zrobiłam to bez pętli, żeby moja partnerka rozumiała co się dzieje.
+    #Ładujemy pytania do bota które wrzucimy pod listę radio. Zrobiłam to bez pętli, żeby moja partnerka rozumiała co się dzieje.
     pytanie1=random.randint (0,len(dictionary)-1)
     pytanie2=random.randint (0,len(dictionary)-1)
     pytanie3=random.randint (0,len(dictionary)-1)
