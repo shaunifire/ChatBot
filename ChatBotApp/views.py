@@ -1,11 +1,8 @@
 from django.shortcuts import render
 #from .models import Odpowiedz
 import random
-def odpowiedz_bota(request):
-    return render (request, '/baza_danych1.csv', {})
 
 
-chosen=0
 
     #chosen == 99 to zmienna kontrolna, która zmieni się gdy zostanie wysłana informacja z templatki z kliknięciem na button. Ponieważ będzie ona miała wartość zgodną z randomową liczbą wybraną prze kompa, muszę jej nadać kontrolną liczbę która NA PEWNO nie wystąpi podczaslosowania.
 def funkcja_buttona(request):
@@ -20,7 +17,7 @@ def test (request, chosen=99):
     import pandas
     import csv
     lista=[]
-    with open('/baza_danych1.csv', 'r', newline='\n') as csvfile:
+    with open('baza_danych1.csv', 'r', newline='\n') as csvfile:
         data=csv.reader(csvfile)
         dictionary=[]
         for row in data:
@@ -36,9 +33,9 @@ def test (request, chosen=99):
     button4=dictionary[pytanie4][0]
     #testowa=pytanie1
         #zmienna chosen jest wysyłana do nas za drugim załadowaniem, więc zmienia wartość z 99 na 1-4
-    if chosen!==99:
+    if chosen!=99:
         odpowiedz=random.randint(1,dictionary[chosen])
         odpowiedz_bota_z_listy=dictionary[chosen][odpowiedz]
         return render (request, 'templates/odpowiedz.html', {"testowa":testowa, "button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":odpowiedz_bota_z_listy} )
     else:
-        return render (request, 'templates/odpowiedz.html', #{"button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":"ddddddddddkdkdkdkdkd"} )
+        return render (request, 'templates/odpowiedz.html', {"button1":button1,"button2":button2,"button3":button3,"button4":button4, "odpowiedz_bota_z_listy":"ddddddddddkdkdkdkdkd"} )
